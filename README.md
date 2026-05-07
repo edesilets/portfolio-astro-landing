@@ -1,44 +1,55 @@
-# Astro Starter Kit: Blog
+# Ethan Desilets — Portfolio
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
-
-<!-- dash-content-start -->
-
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
-
-<!-- dash-content-end -->
-
-## Getting Started
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## Setup
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
+npm install
+npm run dev
 ```
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
+Open [http://localhost:4321](http://localhost:4321).
 
-## 🚀 Project Structure
+## Structure
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+```
+src/
+├── data/
+│   └── projects.ts          # All project content — edit here
+├── layouts/
+│   └── Base.astro           # HTML shell, fonts, Tailwind config
+├── components/
+│   ├── Nav.astro            # Sticky nav bar
+│   └── ProjectCard.astro    # Card used on homepage
+└── pages/
+    ├── index.astro          # Main single-page site
+    └── projects/
+        └── [slug].astro     # Dynamic project detail pages
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Adding a hero photo
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+In `src/pages/index.astro`, find the `<!-- Swap <img> in here once hero photo is ready -->` comment
+and replace the `<span>` initials with:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```html
+<img src="/hero.jpg" alt="Ethan Desilets" class="w-full h-full object-cover" />
+```
+
+Drop the photo at `public/hero.jpg`.
+
+## Adding project detail content
+
+Each project page at `/projects/[slug]` has a "Full case study coming soon" placeholder.
+Open `src/pages/projects/[slug].astro` to add sections, images, and metrics when ready.
+
+## Future scope (tracked, not in this build)
+
+- Strava / Garmin live activity feed in hobbies section
+- Hike locations map
+- Project grouping / filtering on the projects index
+- Full case study pages per project
 
 ## 🧞 Commands
 
@@ -57,8 +68,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn more?
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Check out [our documentation](https://docs.astro.build)

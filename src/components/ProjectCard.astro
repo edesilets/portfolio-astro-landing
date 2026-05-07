@@ -1,0 +1,39 @@
+---
+export interface Props {
+  slug: string;
+  title: string;
+  summary: string;
+  tags: string[];
+  track: "work" | "maker";
+}
+const { slug, title, summary, tags, track } = Astro.props;
+const accentClass = track === "maker"
+  ? "text-maker border-maker/30 hover:bg-maker/10"
+  : "text-accent border-accent/30 hover:bg-accent-muted";
+---
+
+<a
+  href={`/projects/${slug}`}
+  class="group block bg-bg-surface border border-bg-border rounded-xl p-6 hover:border-bg-border/80 transition-all duration-200 hover:-translate-y-0.5"
+>
+  <h3 class="font-display font-semibold text-base text-text-primary mb-2 group-hover:text-accent transition-colors">
+    {title}
+  </h3>
+  <p class="font-mono text-xs text-text-secondary leading-relaxed mb-5">
+    {summary}
+  </p>
+  <div class="flex flex-wrap gap-1.5 mb-4">
+    {tags.map((tag) => (
+      <span class={`font-mono text-[10px] px-2 py-0.5 rounded-full border ${accentClass} transition-colors`}>
+        {tag}
+      </span>
+    ))}
+  </div>
+  <div class={`font-mono text-[11px] flex items-center gap-1 ${track === "maker" ? "text-maker" : "text-accent"}`}>
+    Case study
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-0.5 transition-transform">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </svg>
+  </div>
+</a>

@@ -1,50 +1,301 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { featuredWork, featuredMaker } from "../data/projects";
+
+const techStack = {
+  "Languages": ["Python", "Go", "C/C++", "JavaScript", "PHP"],
+  "Data & Messaging": ["PostgreSQL", "Kafka", "Redis", "InfluxDB", "MSSQL", "MQTT"],
+  "Infrastructure": ["Docker", "Kubernetes", "Terraform", "Linux", "Cloudflare", "Wireguard"],
+  "Cloud & Platforms": ["Google Cloud", "AWS", "FastAPI", "Node.js", "Grafana"],
+  "Hardware": ["ESP32 / ESP8266", "Raspberry Pi", "Arduino", "KiCad", "I2C / SPI / CAN"],
+};
+
+const hobbies = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l4-8 4 4 3-6 4 10"/><path d="M2 20h20"/></svg>`,
+    name: "Hiking",
+    detail: "Working the NH 48 four-thousand footers. Tracking via Garmin & Strava.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg>`,
+    name: "Bodybuilding",
+    detail: "Consistent training and lifting. Fueled by patience and protein.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5v14"/><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 3 6 3 9s-1 6-3 9"/><path d="M12 3c-2 3-3 6-3 9s1 6 3 9"/></svg>`,
+    name: "Ham radio",
+    detail: "Licensed operator. Enjoys RF experimentation and circuit design.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+    name: "Farming",
+    detail: "Growing bonsai, tending gardens, and operating heavy equipment.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M8 6V4"/><path d="M16 6V4"/><path d="M2 10h20"/></svg>`,
+    name: "Microcontrollers",
+    detail: "Raspberry Pi, ESP32, ESP8266, and Arduino — always a project on the bench.",
+  },
+];
+
+const education = [
+  {
+    school: "General Assembly",
+    credential: "Web Development Immersive — full-stack certificate",
+    note: null,
+  },
+  {
+    school: "Quinsigamond Community College",
+    credential: "Mechanical Drafting & CAD/CADD",
+    note: "Graduated with honors",
+  },
+  {
+    school: "Blackstone Valley Vocational Technical",
+    credential: "Machine Shop & Metal Fabrication",
+    note: null,
+  },
+  {
+    school: "Commonwealth of Massachusetts",
+    credential: "2A Hoisting License",
+    note: "Licensed heavy equipment operator",
+  },
+];
+
+const socials = [
+  { label: "GitHub",    href: "https://github.com/edesilets" },
+  { label: "LinkedIn",  href: "https://www.linkedin.com/in/ethandesilets/" },
+  { label: "Strava",    href: "https://www.strava.com/athletes/16920867" },
+  { label: "Garmin",    href: "https://connect.garmin.com/app/profile/a624bd40-ba95-4b43-85ad-97e81321752e" },
+  { label: "Instagram", href: "https://www.instagram.com/ethan_in_the_wild/" },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Base title="Ethan Desilets — Software Engineer">
+  <Nav />
+
+  <!-- ── HERO ─────────────────────────────────────────────────────── -->
+  <section class="min-h-screen flex flex-col justify-center px-6 pt-14">
+    <div class="max-w-5xl mx-auto w-full py-24">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-12">
+        <div class="max-w-xl">
+          <p class="font-mono text-xs text-text-muted tracking-widest uppercase mb-6 animate-fade-up">
+            Greater Boston · Software Engineer
+          </p>
+          <h1 class="font-display font-bold text-5xl md:text-6xl text-text-primary leading-tight mb-4 animate-fade-up delay-1">
+            Ethan<br/>Desilets
+          </h1>
+          <p class="font-mono text-sm text-text-secondary leading-relaxed mb-8 animate-fade-up delay-2">
+            Backend engineer by day. Microcontroller tinkerer, bonsai grower, and 4,000-footer chaser by night.
+            I build systems that scale — and circuits that just barely fit on a breadboard.
+          </p>
+          <div class="flex gap-3 animate-fade-up delay-3">
+            <a
+              href="#projects"
+              class="font-mono text-xs px-5 py-2.5 rounded-lg bg-accent text-bg-base font-medium hover:bg-accent-dim transition-colors"
+            >
+              View projects
+            </a>
+            <a
+              href="#contact"
+              class="font-mono text-xs px-5 py-2.5 rounded-lg border border-bg-border text-text-secondary hover:text-text-primary hover:border-text-muted transition-colors"
+            >
+              Get in touch
+            </a>
+          </div>
+        </div>
+
+        <!-- Avatar -->
+        <div class="animate-fade-up delay-4 flex-shrink-0">
+          <div
+            id="avatar-wrap"
+            class="w-40 h-40 md:w-48 md:h-48 rounded-2xl bg-bg-elevated border border-bg-border flex items-center justify-center overflow-hidden"
+          >
+            <!-- Swap <img> in here once hero photo is ready -->
+            <span class="font-display font-bold text-5xl text-accent/60 select-none">ED</span>
+          </div>
+          <p class="font-mono text-[10px] text-text-muted text-center mt-2">photo coming soon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ────────────────────────────────────────────────────── -->
+  <section id="about" class="px-6 py-24 border-t border-bg-border">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs text-text-muted tracking-widest uppercase mb-10">About</p>
+
+      <div class="grid md:grid-cols-2 gap-16">
+        <!-- Bio -->
+        <div>
+          <h2 class="font-display font-semibold text-2xl text-text-primary mb-4">Background</h2>
+          <div class="space-y-4 font-mono text-sm text-text-secondary leading-relaxed">
+            <p>
+              Started in machine shop and mechanical drafting at BVT and Quinsigamond Community College,
+              then crossed into software through General Assembly's full-stack bootcamp.
+              That physical-to-digital path shows up in everything I build.
+            </p>
+            <p>
+              I specialize in backend systems — data pipelines, distributed infrastructure, and the
+              glue code that makes complex systems reliable. Outside of professional work, I apply the
+              same thinking to home lab projects: if there's a sensor to wire or a metric to capture, I'm in.
+            </p>
+            <p>
+              Holds a Massachusetts 2A hoisting license. Comfortable with everything from
+              oscilloscopes and KiCad schematics to Kafka clusters and Kubernetes manifests.
+            </p>
+          </div>
+
+          <!-- Education -->
+          <div class="mt-10">
+            <h3 class="font-display font-semibold text-base text-text-primary mb-5">Education</h3>
+            <ul class="space-y-4">
+              {education.map((e) => (
+                <li class="flex gap-3 items-start">
+                  <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
+                  <div>
+                    <p class="font-mono text-xs text-text-primary">{e.school}</p>
+                    <p class="font-mono text-xs text-text-secondary">{e.credential}</p>
+                    {e.note && <p class="font-mono text-[10px] text-text-muted mt-0.5">{e.note}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Stack -->
+        <div>
+          <h2 class="font-display font-semibold text-2xl text-text-primary mb-6">Tech stack</h2>
+          <div class="space-y-6">
+            {Object.entries(techStack).map(([category, items]) => (
+              <div>
+                <p class="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-2">{category}</p>
+                <div class="flex flex-wrap gap-1.5">
+                  {items.map((item) => (
+                    <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-bg-elevated border border-bg-border text-text-secondary">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ──────────────────────────────────────────────────── -->
+  <section id="projects" class="px-6 py-24 border-t border-bg-border">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs text-text-muted tracking-widest uppercase mb-10">Projects</p>
+
+      <!-- Work -->
+      <div class="mb-16">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-display font-semibold text-2xl text-text-primary">Professional work</h2>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent/30 text-accent/70">
+            backend · systems
+          </span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {featuredWork.map((p) => (
+            <ProjectCard slug={p.slug} title={p.title} summary={p.summary} tags={p.tags} track={p.track} />
+          ))}
+        </div>
+      </div>
+
+      <!-- Maker -->
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-display font-semibold text-2xl text-text-primary">Home & maker builds</h2>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-maker/30 text-maker/70">
+            hardware · embedded · home lab
+          </span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {featuredMaker.map((p) => (
+            <ProjectCard slug={p.slug} title={p.title} summary={p.summary} tags={p.tags} track={p.track} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOBBIES ───────────────────────────────────────────────────── -->
+  <section id="hobbies" class="px-6 py-24 border-t border-bg-border">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs text-text-muted tracking-widest uppercase mb-10">Beyond the keyboard</p>
+      <h2 class="font-display font-semibold text-2xl text-text-primary mb-8">Life outside work</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        {hobbies.map((h) => (
+          <div class="bg-bg-surface border border-bg-border rounded-xl p-5 flex flex-col items-start gap-3 hover:border-bg-border/70 transition-colors">
+            <span class="text-text-muted" set:html={h.icon} />
+            <div>
+              <p class="font-display font-semibold text-sm text-text-primary mb-1">{h.name}</p>
+              <p class="font-mono text-[11px] text-text-secondary leading-relaxed">{h.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ───────────────────────────────────────────────────── -->
+  <section id="contact" class="px-6 py-24 border-t border-bg-border">
+    <div class="max-w-5xl mx-auto">
+      <p class="font-mono text-xs text-text-muted tracking-widest uppercase mb-10">Contact</p>
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="font-display font-semibold text-2xl text-text-primary mb-3">Let's talk</h2>
+          <p class="font-mono text-sm text-text-secondary leading-relaxed mb-8">
+            Open to interesting backend problems, embedded projects, or trail recommendations.
+          </p>
+          <a
+            href="mailto:hello@ethandesilets.com"
+            class="inline-flex items-center gap-2 font-mono text-sm px-6 py-3 rounded-lg bg-accent text-bg-base font-medium hover:bg-accent-dim transition-colors"
+          >
+            hello@ethandesilets.com
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <div>
+          <p class="font-mono text-[10px] text-text-muted uppercase tracking-widest mb-4">Find me on</p>
+          <div class="flex flex-col gap-2">
+            {socials.map((s) => (
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center justify-between font-mono text-xs px-4 py-3 rounded-lg bg-bg-surface border border-bg-border text-text-secondary hover:text-text-primary hover:border-text-muted transition-colors"
+              >
+                {s.label}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-0 group-hover:opacity-100 transition-opacity">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
+  <footer class="px-6 py-8 border-t border-bg-border">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-mono text-[11px] text-text-muted">© {new Date().getFullYear()} Ethan Desilets · Greater Boston</p>
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[10px] text-text-muted">Built with</span>
+        <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-bg-border text-text-muted">Astro</span>
+        <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-bg-border text-text-muted">Tailwind</span>
+      </div>
+    </div>
+  </footer>
+</Base>
