@@ -4,30 +4,30 @@
   --font-display: "Syne", sans-serif;
   --font-mono: "DM Mono", monospace;
 
-  --color-bg-base: #0b0d12;
-  --color-bg-surface: #11141c;
-  --color-bg-elevated: #171a24;
-  --color-bg-border: #1e2235;
+  --color-bg-base: #0D1117;
+  --color-bg-surface: #161B22;
+  --color-bg-elevated: #1c2330;
+  --color-bg-border: #30363d;
 
-  --color-accent: #5b7fff;
-  --color-accent-dim: #3d5ce8;
-  --color-accent-muted: rgba(91, 127, 255, 0.12);
+  --color-accent: #58A6FF;
+  --color-accent-dim: #388bfd;
+  --color-accent-muted: rgba(88, 166, 255, 0.12);
 
-  --color-text-primary: #e4e6f0;
-  --color-text-secondary: #7a80a0;
-  --color-text-muted: #3d4260;
+  --color-text-primary: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-text-muted: #484f58;
 
-  --color-maker: #38d9a9;
-  --color-maker-muted: rgba(56, 217, 169, 0.10);
+  --color-maker: #3fb950;
+  --color-maker-muted: rgba(63, 185, 80, 0.12);
 }
 
 * { box-sizing: border-box; }
-html { background: #0b0d12; }
+html { background: #0D1117; }
 body { font-family: "Syne", sans-serif; }
-::selection { background: rgba(91, 127, 255, 0.3); color: #e4e6f0; }
+::selection { background: rgba(88, 166, 255, 0.3); color: #E6EDF3; }
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #0b0d12; }
-::-webkit-scrollbar-thumb { background: #1e2235; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #0D1117; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 2px; }
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(18px); }
