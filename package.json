@@ -1,8 +1,8 @@
 {
 	"name": "portfolio-astro-landing",
-	"description": "Build a personal website, blog, or portfolio with Astro.",
+	"description": "ethan-desilets-portfolio",
 	"cloudflare": {
-		"label": "Astro Framework Starter",
+		"label": "ethan-desilets-portfolio",
 		"products": [
 			"Workers"
 		],
