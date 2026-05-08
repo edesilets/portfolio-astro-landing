@@ -10,5 +10,15 @@
 	"observability": {
 		"enabled": true
 	},
-	"upload_source_maps": true
+	"upload_source_maps": true,
+	"routes": [
+		{
+			"pattern": "www.ethandesilets.com",
+			"custom_domain": true
+		},
+		{
+			"pattern": "ethandesilets.com",
+			"custom_domain": true
+		}
+	]
 }
