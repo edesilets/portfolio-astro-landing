@@ -1,0 +1,56 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { allWork } from "../../data/projects";
+---
+
+<Base title="Professional work — Ethan Desilets" description="Backend and systems projects from professional work.">
+  <Nav />
+
+  <main class="pt-28 pb-24 px-6 min-h-screen">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 font-mono text-xs text-text-muted mb-12">
+        <a href="/" class="hover:text-text-secondary transition-colors">Home</a>
+        <span>/</span>
+        <a href="/#projects" class="hover:text-text-secondary transition-colors">Projects</a>
+        <span>/</span>
+        <span class="text-text-secondary">Professional work</span>
+      </nav>
+
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h1 class="font-display font-bold text-4xl md:text-5xl text-text-primary mb-2">Professional work</h1>
+          <p class="font-mono text-sm text-text-secondary">Backend systems, data infrastructure, and tooling.</p>
+        </div>
+        <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent/30 text-accent/70 self-start mt-2">
+          backend · systems
+        </span>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {allWork.map((p) => (
+          <ProjectCard slug={p.slug} title={p.title} summary={p.summary} tags={p.tags} track={p.track} />
+        ))}
+      </div>
+
+      <!-- Back -->
+      <div class="mt-12">
+        <a
+          href="/#projects"
+          class="inline-flex items-center gap-2 font-mono text-xs text-text-secondary hover:text-text-primary transition-colors"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Back to projects
+        </a>
+      </div>
+
+    </div>
+  </main>
+</Base>

@@ -187,4 +187,6 @@ export const projects: Project[] = [
 
 export const featuredWork = projects.filter((p) => p.track === "work" && p.featured);
 export const featuredMaker = projects.filter((p) => p.track === "maker" && p.featured);
+export const allWork = projects.filter((p) => p.track === "work");
+export const allMaker = projects.filter((p) => p.track === "maker");
 export const allProjects = projects;
