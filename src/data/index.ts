@@ -1,8 +1,10 @@
 export const techStack: Record<string, string[]> = {
-  "Languages": ["Python", "Go", "C/C++", "JavaScript", "PHP"],
-  "Data & Messaging": ["PostgreSQL", "Kafka", "Redis", "InfluxDB", "MSSQL", "MQTT"],
+  "Languages": ["Python", "PHP", "Node.js","C/C++",  "Go", "JavaScript"],
+  "Frameworks & Runtimes": ["FastAPI", "Laravel", "Express"],
+  "Data & Messaging": ["PostgreSQL", "MSSQL","InfluxDB", "Redis", "Kafka", "MQTT"],
   "Infrastructure": ["Docker", "Kubernetes", "Terraform", "Linux", "Cloudflare", "Wireguard"],
-  "Cloud & Platforms": ["Google Cloud", "AWS", "FastAPI", "Node.js", "Grafana"],
+  "Cloud & Platforms": ["Google Cloud", "AWS"],
+  "Observability": ["Grafana"],
   "Hardware": ["ESP32 / ESP8266", "Raspberry Pi", "Arduino", "KiCad", "I2C / SPI / CAN"],
 };
 
