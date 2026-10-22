@@ -4,7 +4,7 @@ export const techStack: Record<string, string[]> = {
   "Data & Messaging": ["PostgreSQL", "MSSQL","InfluxDB", "Redis", "Kafka", "MQTT"],
   "Infrastructure": ["Docker", "Kubernetes", "Terraform", "Linux", "Cloudflare", "Wireguard"],
   "Cloud & Platforms": ["Google Cloud", "AWS"],
-  "Observability": ["Grafana"],
+  "Observability": ["Grafana", "Datadog"],
   "Hardware": ["ESP32 / ESP8266", "Raspberry Pi", "Arduino", "KiCad", "I2C / SPI / CAN"],
 };
 
