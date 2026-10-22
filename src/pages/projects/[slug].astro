@@ -60,10 +60,19 @@ const trackColor = project.track === "work" ? "text-accent border-accent/30" : "
         </p>
       </div>
 
-      <!-- Placeholder for full case study content -->
-      <div class="bg-bg-elevated border border-dashed border-bg-border rounded-xl p-8 text-center">
-        <p class="font-mono text-xs text-text-muted">Full case study coming soon</p>
-      </div>
+      <!-- Case study (placeholder when none is written yet) -->
+      {project.caseStudy ? (
+        <div class="bg-bg-surface border border-bg-border rounded-xl p-8">
+          <h2 class="font-display font-semibold text-lg text-text-primary mb-4">Case study</h2>
+          <p class="font-mono text-sm text-text-secondary leading-relaxed whitespace-pre-line">
+            {project.caseStudy}
+          </p>
+        </div>
+      ) : (
+        <div class="bg-bg-elevated border border-dashed border-bg-border rounded-xl p-8 text-center">
+          <p class="font-mono text-xs text-text-muted">Full case study coming soon</p>
+        </div>
+      )}
 
       <!-- Back -->
       <div class="mt-12">

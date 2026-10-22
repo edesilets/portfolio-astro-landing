@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import Nav from "../../components/Nav.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
-import { allWork } from "../../data/projects";
+import { allWork, groupByCategory } from "../../data/projects";
 ---
 
 <Base title="Professional work — Ethan Desilets" description="Backend and systems projects from professional work.">
@@ -24,19 +24,33 @@ import { allWork } from "../../data/projects";
       <div class="flex items-center justify-between mb-10">
         <div>
           <h1 class="font-display font-bold text-4xl md:text-5xl text-text-primary mb-2">Professional work</h1>
-          <p class="font-mono text-sm text-text-secondary">Backend systems, data infrastructure, and tooling.</p>
+          <p class="font-mono text-sm text-text-secondary">Engineering, manufacturing, and drafting.</p>
         </div>
         <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent/30 text-accent/70 self-start mt-2">
           backend · systems
         </span>
       </div>
 
-      <!-- Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {allWork.map((p) => (
-          <ProjectCard slug={p.slug} title={p.title} summary={p.summary} tags={p.tags} track={p.track} />
-        ))}
-      </div>
+      <!-- Subsections -->
+      {groupByCategory(allWork).map((g) => (
+        <div class="mb-10 last:mb-0">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <h3 class="font-display font-semibold text-lg text-text-secondary">{g.title}</h3>
+            <span class="font-mono text-[10px] text-text-muted text-right">{g.badge}</span>
+          </div>
+          {g.projects.length > 0 ? (
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {g.projects.map((p) => (
+                <ProjectCard slug={p.slug} title={p.title} summary={p.summary} tags={p.tags} track={p.track} />
+              ))}
+            </div>
+          ) : (
+            <p class="font-mono text-xs text-text-muted border border-dashed border-bg-border rounded-xl p-6">
+              Projects coming soon.
+            </p>
+          )}
+        </div>
+      ))}
 
       <!-- Back -->
       <div class="mt-12">

@@ -1,10 +1,23 @@
+export type WorkCategory = "engineering" | "manufacturing" | "drafting";
+
+// Subsections under "Professional work", in display order.
+export const workCategories: { id: WorkCategory; title: string; badge: string }[] = [
+  { id: "engineering", title: "Electronics, hardware & software engineering", badge: "backend · systems · hardware" },
+  { id: "manufacturing", title: "Manufacturing", badge: "machining · fabrication" },
+  { id: "drafting", title: "Drafting", badge: "CAD · technical drawings" },
+];
+
 export type Project = {
   slug: string;
   title: string;
   track: "work" | "maker";
+  /** Work projects only: which "Professional work" subsection it appears under. Defaults to "engineering". */
+  category?: WorkCategory;
   featured: boolean;
   summary: string;
   description: string;
+  /** Optional. Shown in the case study box on the detail page; omit to show "Full case study coming soon". */
+  caseStudy?: string;
   tags: string[];
   links?: { label: string; url: string }[];
   start_year: number | null;
@@ -17,6 +30,7 @@ export const projects: Project[] = [
     slug: "data-replication-pipeline",
     title: "Data Replication Pipeline",
     track: "work",
+    category: "engineering",
     featured: true,
     summary:
       "MSSQL → Postgres regional replication leveraging Kafka for a high-throughput order processing system.",
@@ -30,6 +44,7 @@ export const projects: Project[] = [
     slug: "wms",
     title: "WMS - Warehouse Management System",
     track: "work",
+    category: "engineering",
     featured: true,
     summary: "Built a warehouse management system for final-mile delivery operations.",
     description:
@@ -42,6 +57,7 @@ export const projects: Project[] = [
     slug: "repository-migration-tooling",
     title: "Repository Migration Tooling",
     track: "work",
+    category: "engineering",
     featured: true,
     summary: "Automated migration of all repositories from Stash to Bitbucket with full history.",
     description:
@@ -54,6 +70,7 @@ export const projects: Project[] = [
     slug: "db-image-extraction",
     title: "DB Image Extraction & Migration",
     track: "work",
+    category: "engineering",
     featured: false,
     summary:
       "PHP script to extract employee images stored in MSSQL BLOBs and migrate them into Software House.",
@@ -68,6 +85,7 @@ export const projects: Project[] = [
     slug: "order-processing-refactor",
     title: "Order Processing Refactor",
     track: "work",
+    category: "engineering",
     featured: true,
     summary: "Refactored the order processing system for an e-commerce platform.",
     description:
@@ -80,6 +98,7 @@ export const projects: Project[] = [
     slug: "site-archiver",
     title: "Site crawler & archiver",
     track: "work",
+    category: "engineering",
     featured: false,
     summary: "Crawler that zipped entire sites for archiving purposes.",
     description:
@@ -92,6 +111,7 @@ export const projects: Project[] = [
     slug: "sql-report-generation",
     title: "Telecoms SQL Report Generation",
     track: "work",
+    category: "engineering",
     featured: false,
     summary: "SQL queries generating reports for copper telephone cable removal projects.",
     description:
@@ -99,6 +119,20 @@ export const projects: Project[] = [
     tags: ["SQL", "Reporting", "Telecom"],
     start_year: null,
     end_year: null,
+  },
+  {
+    slug: "machine-shop-water-disrupter-demo",
+    title: "Water Disrupter Demo",
+    track: "work",
+    category: "manufacturing",
+    featured: false,
+    summary: "Demo of a water disrupter for the machine shop.",
+    description:
+      "Built a demo of a water disrupter for the machine shop, showcasing its functionality and potential applications.",
+    caseStudy: "This project involved designing and fabricating a demo water disrupter for the marketing team. The demo highlighted the robot's capabilities and potential uses of the robot in real-world scenarios.",
+    tags: ["Turning Work"],
+    start_year: 2011,
+    end_year: 2011,
   },
   // ── MAKER — featured ─────────────────────────────────────────────
   {
@@ -226,3 +260,9 @@ export const featuredMaker = projects.filter((p) => p.track === "maker" && p.fea
 export const allWork = projects.filter((p) => p.track === "work");
 export const allMaker = projects.filter((p) => p.track === "maker");
 export const allProjects = projects;
+
+const categoryOf = (p: Project): WorkCategory => p.category ?? "engineering";
+
+/** Group a list of work projects into the subsections above. */
+export const groupByCategory = (list: Project[]) =>
+  workCategories.map((c) => ({ ...c, projects: list.filter((p) => categoryOf(p) === c.id) }));
