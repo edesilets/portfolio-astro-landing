@@ -34,7 +34,7 @@ import { allMaker } from "../../data/projects";
       <!-- Grid -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {allMaker.map((p) => (
-          <ProjectCard slug={p.slug} title={p.title} summary={p.summary} tags={p.tags} track={p.track} />
+          <ProjectCard slug={p.slug} title={p.title} summary={p.summary} tags={p.tags} track={p.track} image={p.image} />
         ))}
       </div>
 

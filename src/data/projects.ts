@@ -18,6 +18,8 @@ export type Project = {
   description: string;
   /** Optional. Shown in the case study box on the detail page; omit to show "Full case study coming soon". */
   caseStudy?: string;
+  /** Optional. Picture shown at the top of the project card. `src` is a path under public/ (e.g. "/images/foo.jpg") or a full URL. */
+  image?: { src: string; alt: string };
   tags: string[];
   links?: { label: string; url: string }[];
   start_year: number | null;
@@ -121,15 +123,33 @@ export const projects: Project[] = [
     end_year: null,
   },
   {
-    slug: "machine-shop-water-disrupter-demo",
+    slug: "machine-shop-water-disruptor-demo",
     title: "Water Disrupter Demo",
     track: "work",
     category: "manufacturing",
     featured: false,
-    summary: "Demo of a water disrupter for the machine shop.",
+    summary: "Demo of a water disrupter for tradeshows.",
     description:
       "Built a demo of a water disrupter for the machine shop, showcasing its functionality and potential applications.",
     caseStudy: "This project involved designing and fabricating a demo water disrupter for the marketing team. The demo highlighted the robot's capabilities and potential uses of the robot in real-world scenarios.",
+    // Files in public/ are served from the site root: public/images/foo.jpg → "/images/foo.jpg"
+    image: { src: "/images/professional-projects/machine-shop-water-disruptor-demo.jpg", alt: "Water disrupter demo part" },
+    tags: ["Turning Work"],
+    start_year: 2011,
+    end_year: 2011,
+  },
+  {
+    slug: "machine-shop-robot-clamp-spikes",
+    title: "Robot Clamp Spikes",
+    track: "work",
+    category: "manufacturing",
+    featured: false,
+    summary: "Multi-purpose clamp spikes for a robot.",
+    description:
+      "Built a demo of a water disrupter for the machine shop, showcasing its functionality and potential applications.",
+    caseStudy: "spikes for a robot clamp, designed to securely hold various objects during robotic operations. The spikes were fabricated using precision machining techniques to ensure durability and reliability.",
+    // Files in public/ are served from the site root: public/images/foo.jpg → "/images/foo.jpg"
+    image: { src: "/images/professional-projects/machine-shop-robot-clamp-spikes.jpg", alt: "Robot clamp spikes" },
     tags: ["Turning Work"],
     start_year: 2011,
     end_year: 2011,

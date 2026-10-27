@@ -5,8 +5,9 @@ export interface Props {
   summary: string;
   tags: string[];
   track: "work" | "maker";
+  image?: { src: string; alt: string };
 }
-const { slug, title, summary, tags, track } = Astro.props;
+const { slug, title, summary, tags, track, image } = Astro.props;
 const accentClass = track === "maker"
   ? "text-maker border-maker/30 hover:bg-maker/10"
   : "text-accent border-accent/30 hover:bg-accent-muted";
@@ -16,6 +17,11 @@ const accentClass = track === "maker"
   href={`/projects/${slug}`}
   class="group block bg-bg-surface border border-bg-border rounded-xl p-6 hover:border-bg-border/80 transition-all duration-200 hover:-translate-y-0.5"
 >
+  {image && (
+    <div class="-mx-6 -mt-6 mb-5 overflow-hidden rounded-t-xl border-b border-bg-border">
+      <img src={image.src} alt={image.alt} loading="lazy" class="w-full aspect-video object-cover" />
+    </div>
+  )}
   <h3 class="font-display font-semibold text-base text-text-primary mb-2 group-hover:text-accent transition-colors">
     {title}
   </h3>
