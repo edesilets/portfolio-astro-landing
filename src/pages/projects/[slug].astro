@@ -52,6 +52,13 @@ const trackColor = project.track === "work" ? "text-accent border-accent/30" : "
         ))}
       </div>
 
+      <!-- Image -->
+      {project.image && (
+        <div class="bg-bg-surface border border-bg-border rounded-xl overflow-hidden mb-8">
+          <img src={project.image.src} alt={project.image.alt} class="w-full h-auto object-cover" />
+        </div>
+      )}
+
       <!-- Description -->
       <div class="bg-bg-surface border border-bg-border rounded-xl p-8 mb-8">
         <h2 class="font-display font-semibold text-lg text-text-primary mb-4">Overview</h2>
