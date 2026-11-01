@@ -273,9 +273,10 @@ export const projects: Project[] = [
     featured: false,
     summary: "Custom controller for an air conditioning unit.",
     description: "Wired up a microcontroller to manage an air conditioner based on temperature thresholds.",
+    image: { src: "/images/maker-projects/ac-controller-circuit-board.png", alt: "Air Conditioner Controller Circuit Board" },
     tags: ["ESP32", "C/C++"],
-    start_year: null,
-    end_year: null,
+    start_year: 2023,
+    end_year: 2025,
   },
   {
     slug: "hubitat-home-automation",
