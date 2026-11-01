@@ -123,6 +123,22 @@ export const projects: Project[] = [
     end_year: null,
   },
   {
+    slug: "machine-shop-screw-trim-die",
+    title: "Screw Trim Die",
+    track: "work",
+    category: "manufacturing",
+    featured: false,
+    summary: "Trim die for manufacturing screws.",
+    description:
+      "Manufactured dies that will be used in the creation of screws.",
+    caseStudy: "Setting CNC Lathe Tool Offsets (Geometry, Ware, and Work Offsets). Hand Wrote G Code to do multiple operations (Used cutoff tool to remove a large amount of material off the face of the part. Then used a finish boring bar to face the die. The couter sink was completed by utlizing a chamfer tool to create the counter sink. The part was then finished by using finish turing tool to do the edge brakes on the die.)",
+    // Files in public/ are served from the site root: public/images/foo.jpg → "/images/foo.jpg"
+    image: { src: "/images/professional-projects/machine-shop-machine-shop-screw-trim-die.jpg", alt: "Screw trim die" },
+    tags: ["Turning Work"],
+    start_year: 2026,
+    end_year: 2026,
+  },
+  {
     slug: "machine-shop-water-disruptor-demo",
     title: "Water Disrupter Demo",
     track: "work",
