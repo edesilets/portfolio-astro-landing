@@ -181,8 +181,8 @@ export const projects: Project[] = [
     description:
       "Designed and built an environmental monitoring system for a greenhouse using an Adafruit Feather ESP32-C6 paired with DS18B20 temperature sensors. Data flows over MQTT into InfluxDB and is visualized on Grafana.",
     tags: ["ESP32-C6", "InfluxDB", "Grafana", "MQTT", "C/C++"],
-    start_year: null,
-    end_year: null,
+    start_year: 2025,
+    end_year: 2025,
   },
   {
     slug: "ups-snmp-metrics",
@@ -193,8 +193,8 @@ export const projects: Project[] = [
     description:
       "Set up SNMP polling against APC UPS units to collect voltage, load, battery health, and runtime metrics. Data flows into InfluxDB and is displayed on a Grafana dashboard for the home lab.",
     tags: ["SNMP", "Grafana", "InfluxDB", "Python"],
-    start_year: null,
-    end_year: null,
+    start_year: 2025,
+    end_year: 2025,
   },
   {
     slug: "gps-ntp-server",
@@ -205,8 +205,8 @@ export const projects: Project[] = [
     description:
       "Built a stratum-1 NTP server using a Raspberry Pi and a GPS puck. The GPS provides a highly accurate 1 PPS signal which is used to discipline the system clock, providing precise time to all devices on the home network.",
     tags: ["Raspberry Pi", "GPS NMEA", "NTP", "Linux"],
-    start_year: null,
-    end_year: null,
+    start_year: 2025,
+    end_year: 2025,
   },
   {
     slug: "boiler-control-monitor",
@@ -218,8 +218,8 @@ export const projects: Project[] = [
     description:
       "Designed and wired a custom microcontroller-based system to monitor and control a home boiler. Tracks ambient temperature, boiler pressure, and relay states. Schematic designed in KiCad.",
     tags: ["Arduino", "C/C++", "KiCad", "Sensors"],
-    start_year: null,
-    end_year: null,
+    start_year: 2016,
+    end_year: 2025,
   },
   // ── MAKER — non-featured ─────────────────────────────────────────
   {
@@ -229,9 +229,10 @@ export const projects: Project[] = [
     featured: false,
     summary: "Microcontroller-based room temperature and humidity display.",
     description: "A small microcontroller build that reads temperature and humidity and displays it on a local screen.",
+    image: { src: "/images/maker-projects/room-thermometer.jpg", alt: "Room Thermometer" },
     tags: ["Arduino", "C/C++"],
-    start_year: null,
-    end_year: null,
+    start_year: 2015,
+    end_year: 2015,
   },
   {
     slug: "basement-thermostat",
@@ -240,9 +241,10 @@ export const projects: Project[] = [
     featured: false,
     summary: "Ambient temperature and humidity monitor for the basement.",
     description: "Monitors basement ambient temperature and humidity, logging data for trend analysis.",
+    image: { src: "/images/maker-projects/basement-thermostat.jpg", alt: "Basement Thermostat" },
     tags: ["ESP32", "MQTT", "InfluxDB"],
-    start_year: null,
-    end_year: null,
+    start_year: 2016,
+    end_year: 2016,
   },
   {
     slug: "carrera-lap-monitor",
@@ -251,9 +253,10 @@ export const projects: Project[] = [
     featured: false,
     summary: "Arduino-based lap timing system for a Carrera slot car track.",
     description: "Built a lap counter and timing system for a Carrera slot car set using an Arduino and IR sensors.",
+    image: { src: "/images/maker-projects/carrera-lap-monitor.jpg", alt: "Carrera Lap Monitor" },
     tags: ["Arduino", "C/C++"],
-    start_year: null,
-    end_year: null,
+    start_year: 2016,
+    end_year: 2016,
   },
   {
     slug: "christmas-lights-controller",
@@ -262,9 +265,10 @@ export const projects: Project[] = [
     featured: false,
     summary: "Automated Christmas lights that turn on and off on a schedule.",
     description: "Microcontroller build that controls Christmas lights via relay on a time-based schedule.",
+    image: { src: "/images/maker-projects/christmas-lights-controller.jpg", alt: "Christmas Lights Controller" },
     tags: ["Arduino", "C/C++"],
-    start_year: null,
-    end_year: null,
+    start_year: 2015,
+    end_year: 2015,
   },
   {
     slug: "air-conditioner-controller",
@@ -289,6 +293,19 @@ export const projects: Project[] = [
     tags: ["Hubitat", "Zigbee", "IoT"],
     start_year: null,
     end_year: null,
+  },
+  {
+    slug: "drafting-notes",
+    title: "Drafting Notes",
+    track: "maker",
+    featured: false,
+    summary: "My first html site, a collection of notes on drafting and business standards.",
+    description:
+      "This was my first html site, a collection of notes on drafting and business standards. It was built in 2013.",
+    image: { src: "/images/maker-projects/drafting-notes-website.jpg", alt: "Drafting Notes Website" },
+    tags: ["html", "CSS", "Drafting"],
+    start_year: 2013,
+    end_year: 2013,
   },
 ];
 
