@@ -307,6 +307,30 @@ export const projects: Project[] = [
     start_year: 2013,
     end_year: 2013,
   },
+  {
+    slug: "playing-rfid",
+    title: "Playing with RFID",
+    track: "maker",
+    featured: false,
+    summary: "Exploring RFID technology and its applications.",
+    description: "playing with RC522 RFID readers and tags, experimenting with access control and data storage applications.",
+    image: { src: "/images/maker-projects/playing-rfid.jpg", alt: "Playing with RFID" },
+    tags: ["RFID"],
+    start_year: 2017,
+    end_year: 2017,
+  },
+  {
+    slug: "exploring-CAN-bus-networks",
+    title: "Exploring CAN Bus Networks",
+    track: "maker",
+    featured: false,
+    summary: "Investigating CAN bus technology and its applications.",
+    description: "Exploring the CAN (Controller Area Network) protocol and its use in automotive and industrial applications.",
+    image: { src: "/images/maker-projects/exploring-CAN-bus-networks.jpg", alt: "Exploring CAN Bus Networks" },
+    tags: ["CAN", "Automotive", "Industrial"],
+    start_year: 2017,
+    end_year: 2017,
+  },
 ];
 
 export const featuredWork = projects.filter((p) => p.track === "work" && p.featured);
